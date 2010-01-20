@@ -1,0 +1,17 @@
+CLOJURE RELOADER
+
+Monitors a directory and loads a clojure file. If a .clj file is monitored in that directory
+the process is shutdown and then reloaded.
+
+Helpful in server related projects where the server needs to constantly be restarted during development.
+
+Inspired by django's autoreloading development server
+http://code.djangoproject.com/browser/django/tags/releases/1.0/django/utils/autoreload.py
+
+Example useage:
+java -cp $CLASSPATH clojure.main autoreload.clj example.clj
+
+edit the print statement in example.clj save the file and autoreload will restart the process.
+(Note: $CLASSPATH should contain the clojure jar of course. Replace with %CLASSPATH% on windows)
+
+It picks the first .clj file in *command-line-args* as the file to load, so if you're having trouble getting this to run make sure your script that loads clojure doesn't included 'autoreload.clj' in *command-line-args*.
